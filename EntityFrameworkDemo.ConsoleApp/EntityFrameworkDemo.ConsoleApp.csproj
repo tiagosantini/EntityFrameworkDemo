@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityFrameworkDemo.Aplicacao\EntityFrameworkDemo.Aplicacao.csproj" />
+    <ProjectReference Include="..\EntityFrameworkDemo.Infra.Logging\EntityFrameworkDemo.Infra.Logging.csproj" />
     <ProjectReference Include="..\EntityFrameworkDemo.Infra\EntityFrameworkDemo.Infra.csproj" />
   </ItemGroup>
 

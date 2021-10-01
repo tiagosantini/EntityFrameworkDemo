@@ -1,6 +1,7 @@
 ﻿using EntityFrameworkDemo.Aplicacao.Modules.DespesaModule;
 using EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule;
 using EntityFrameworkDemo.Dominio.Shared;
+using EntityFrameworkDemo.Infra.Logging;
 using EntityFrameworkDemo.Infra.Modules.DespesaModule;
 using System;
 
@@ -13,6 +14,8 @@ namespace EntityFrameworkDemo.ConsoleApp
 
         static void Main(string[] args)
         {
+            SerilogConfig.CriarLogger();
+
             while (true)
             {
                 ApresentarMenu();

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.ConsoleApp", "EntityFrameworkDemo.ConsoleApp\EntityFrameworkDemo.ConsoleApp.csproj", "{369A5B1D-FEBD-4FCF-A4A4-03CCD6679F47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.ConsoleApp", "EntityFrameworkDemo.ConsoleApp\EntityFrameworkDemo.ConsoleApp.csproj", "{369A5B1D-FEBD-4FCF-A4A4-03CCD6679F47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Infra", "EntityFrameworkDemo.Infra\EntityFrameworkDemo.Infra.csproj", "{1B605572-BC46-4F23-AA55-41D9C66B1222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Infra", "EntityFrameworkDemo.Infra\EntityFrameworkDemo.Infra.csproj", "{1B605572-BC46-4F23-AA55-41D9C66B1222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Dominio", "EntityFrameworkDemo.Dominio\EntityFrameworkDemo.Dominio.csproj", "{FACAB107-FE8C-4B00-8B79-8A02356500FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Dominio", "EntityFrameworkDemo.Dominio\EntityFrameworkDemo.Dominio.csproj", "{FACAB107-FE8C-4B00-8B79-8A02356500FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Aplicacao", "EntityFrameworkDemo.Aplicacao\EntityFrameworkDemo.Aplicacao.csproj", "{0F4FC6D5-CA12-4FDD-9E91-570C3F9F429C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkDemo.Aplicacao", "EntityFrameworkDemo.Aplicacao\EntityFrameworkDemo.Aplicacao.csproj", "{0F4FC6D5-CA12-4FDD-9E91-570C3F9F429C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkDemo.Infra.Logging", "EntityFrameworkDemo.Infra.Logging\EntityFrameworkDemo.Infra.Logging.csproj", "{CD39B1BC-536E-492D-9755-F3996BFE4D99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0F4FC6D5-CA12-4FDD-9E91-570C3F9F429C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4FC6D5-CA12-4FDD-9E91-570C3F9F429C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4FC6D5-CA12-4FDD-9E91-570C3F9F429C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD39B1BC-536E-492D-9755-F3996BFE4D99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD39B1BC-536E-492D-9755-F3996BFE4D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD39B1BC-536E-492D-9755-F3996BFE4D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD39B1BC-536E-492D-9755-F3996BFE4D99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

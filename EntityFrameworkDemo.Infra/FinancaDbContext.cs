@@ -1,6 +1,7 @@
 ﻿using EntityFrameworkDemo.Dominio.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace EntityFrameworkDemo.Infra
 {
@@ -8,12 +9,13 @@ namespace EntityFrameworkDemo.Infra
     {
         public DbSet<Despesa> Despesas { get; set; }
 
-        private static ILoggerFactory loggerFactoryDebug = LoggerFactory.Create(x => x.AddDebug());
+        private static ILoggerFactory loggerFactorySeq = LoggerFactory.Create(x => x.AddSerilog());
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseLoggerFactory(loggerFactoryDebug)
+                .EnableSensitiveDataLogging()
+                .UseLoggerFactory(loggerFactorySeq)
                 .UseSqlServer(@"Data Source=(localdb)\MSSqlLocalDB;Initial Catalog=DB_EntityFrameworkDemo;Integrated Security=True;Pooling=False");
         }
 
