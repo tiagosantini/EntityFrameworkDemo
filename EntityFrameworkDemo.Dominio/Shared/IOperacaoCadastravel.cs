@@ -3,6 +3,9 @@
     public interface IOperacaoCadastravel
     {
         void InserirNovoRegistro();
+        void EditarRegistro();
+        void ExcluirRegistro();
+        void SelecionarRegistroPorId();
         void SelecionarTodosRegistros();
     }
 }

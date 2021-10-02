@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace EntityFrameworkDemo.Dominio.Entities
+﻿namespace EntityFrameworkDemo.Dominio.Entities
 {
-    public interface IDespesaRepository
+    public interface IDespesaRepository : IRepository<Despesa>
     {
-        int InserirNovaDespesa(Despesa despesa);
-        List<Despesa> SelecionarTodasDespesas();
     }
 }

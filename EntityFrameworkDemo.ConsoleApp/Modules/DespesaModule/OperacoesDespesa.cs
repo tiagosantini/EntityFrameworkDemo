@@ -30,6 +30,53 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
                 Console.WriteLine("Falha ao salvar Despesa");
         }
 
+        public void EditarRegistro()
+        {
+            Console.Write("Digite o ID do registro que deseja editar: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Despesa despesa = ObterDespesa();
+
+            bool conseguiuEditar = despesaService.EditarRegistro(id, despesa);
+
+            Console.Clear();
+
+            if (conseguiuEditar)
+                Console.WriteLine("Despesa editada com sucesso!");
+            else
+                Console.WriteLine("Falha ao editar Despesa");
+        }
+
+        public void ExcluirRegistro()
+        {
+            Console.Write("Digite o ID do registro que deseja excluir: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            bool conseguiuExcluir = despesaService.ExcluirRegistro(id);
+
+            Console.Clear();
+
+            if (conseguiuExcluir)
+                Console.WriteLine("Despesa excluída com sucesso!");
+            else
+                Console.WriteLine("Falha ao excluir Despesa");
+        }
+
+        public void SelecionarRegistroPorId()
+        {
+            Console.Write("Digite o ID do registro que deseja selecionar: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            var despesa = despesaService.SelecionarPorId(id);
+
+            Console.Clear();
+
+            if (despesa != null)
+                ApresentarTabela(despesa);
+            else
+                Console.WriteLine("Falha ao excluir Despesa");
+        }
+
         public void SelecionarTodosRegistros()
         {
             decimal totalDespesas = 0m;
@@ -101,6 +148,17 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
                 Console.WriteLine(configuracaoColunasTabela, d.Id, d.Descricao, d.Valor, d.TipoDespesa);
                 totalDespesas += d.Valor;
             }
+
+            Console.ResetColor();
+        }
+
+        private static void ApresentarTabela(Despesa despesa)
+        {
+            string configuracaoColunasTabela = "{0,-10} | {1,-50} | {2,-20} | {3,-15}";
+
+            MontarCabecalhoTabela(configuracaoColunasTabela, "Id", "Descrição", "Valor", "Tipo de Despesa");
+
+            Console.WriteLine(configuracaoColunasTabela, despesa.Id, despesa.Descricao, despesa.Valor, despesa.TipoDespesa);
 
             Console.ResetColor();
         }

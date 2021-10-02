@@ -29,7 +29,10 @@ namespace EntityFrameworkDemo.ConsoleApp
                 switch (opcao)
                 {
                     case "1": operacoes.InserirNovoRegistro(); break;
-                    case "2": operacoes.SelecionarTodosRegistros(); break;
+                    case "2": operacoes.EditarRegistro(); break;
+                    case "3": operacoes.ExcluirRegistro(); break;
+                    case "4": operacoes.SelecionarRegistroPorId(); break;
+                    case "5": operacoes.SelecionarTodosRegistros(); break;
                     default: break;
                 }
 
@@ -43,7 +46,10 @@ namespace EntityFrameworkDemo.ConsoleApp
             Console.WriteLine("Gerenciador de Finanças");
             Console.WriteLine("-----------------------------------\n");
             Console.WriteLine("1 - Inserir nova despesa");
-            Console.WriteLine("2 - Visualizar despesas");
+            Console.WriteLine("2 - Editar despesa");
+            Console.WriteLine("3 - Excluir despesa");
+            Console.WriteLine("4 - Selecionar despesa por ID");
+            Console.WriteLine("5 - Selecionar todas as despesas");
             Console.WriteLine("S - Sair do programa");
 
             Console.Write("\nO que deseja fazer? ");
