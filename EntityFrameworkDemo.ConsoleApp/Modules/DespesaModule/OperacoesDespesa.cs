@@ -74,7 +74,7 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
             if (despesa != null)
                 ApresentarTabela(despesa);
             else
-                Console.WriteLine("Falha ao excluir Despesa");
+                Console.WriteLine($"Falha ao selecionar Despesa ID: {id}");
         }
 
         public void SelecionarTodosRegistros()
