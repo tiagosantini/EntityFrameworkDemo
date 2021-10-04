@@ -67,8 +67,6 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
                     _dbSet.Remove(despesa);
 
                     _dbContext.SaveChanges();
-
-                    return true;
                 }
                 else
                     return false;
@@ -77,6 +75,8 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
             {
                 throw ex;
             }
+
+            return true;
         }
 
         public TEntity SelecionarPorId(int id)
