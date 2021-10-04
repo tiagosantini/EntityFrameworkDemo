@@ -31,19 +31,15 @@ namespace EntityFrameworkDemo.Infra.Modules.DespesaModule
             {
                 using (FinancaDbContext db = new FinancaDbContext())
                 {
-                    var despesa = db.Despesas.Where(x => x.Id == id).FirstOrDefault();
+                    var despesaExiste = db.Despesas.Any(x => x.Id == id);
 
-                    if (despesa != null)
+                    if (despesaExiste)
                     {
-                        despesa.Descricao = registro.Descricao;
-                        despesa.Valor = registro.Valor;
-                        despesa.TipoDespesa = registro.TipoDespesa;
+                        registro.Id = id;
 
-                        db.Despesas.Update(despesa);
+                        db.Despesas.Update(registro);
 
                         db.SaveChanges();
-                        
-                        return true;
                     }
                     else
                         return false;
@@ -53,6 +49,8 @@ namespace EntityFrameworkDemo.Infra.Modules.DespesaModule
             {
                 throw ex;
             }
+
+            return true;
         }
 
         public bool ExcluirRegistro(int id)
@@ -61,7 +59,7 @@ namespace EntityFrameworkDemo.Infra.Modules.DespesaModule
             {
                 using (FinancaDbContext db = new FinancaDbContext())
                 {
-                    var despesa = db.Despesas.Where(x => x.Id == id).FirstOrDefault();
+                    var despesa = db.Despesas.Find(id);
 
                     if (despesa != null)
                     {
