@@ -21,7 +21,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                _dbContext.Set<TEntity>().Add(registro);
+                _dbSet.Add(registro);
 
                 return _dbContext.SaveChanges();
             }
@@ -35,13 +35,13 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                var despesaExiste = _dbContext.Set<TEntity>().Any(x => x.Id == id);
+                var despesa = _dbSet.Find(id);
 
-                if (despesaExiste)
+                if (despesa != null)
                 {
                     registro.Id = id;
 
-                    _dbSet.Update(registro);
+                    _dbContext.Entry(despesa).CurrentValues.SetValues(registro);
 
                     _dbContext.SaveChanges();
                 }
@@ -83,7 +83,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                return _dbSet.Where(x => x.Id == id).FirstOrDefault();
+                return _dbSet.AsNoTracking().Where(x => x.Id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                return _dbSet.OrderBy(x => x.Id).ToList();
+                return _dbSet.AsNoTracking().OrderBy(x => x.Id).ToList();
             }
             catch (Exception ex)
             {
