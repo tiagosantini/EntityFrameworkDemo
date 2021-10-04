@@ -16,12 +16,9 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                using (_dbContext)
-                {
-                   _dbContext.Set<TEntity>().Add(registro);
+                _dbContext.Set<TEntity>().Add(registro);
 
-                    return _dbContext.SaveChanges();
-                }
+                return _dbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -33,21 +30,18 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                using (_dbContext)
+                var despesaExiste = _dbContext.Set<TEntity>().Any(x => x.Id == id);
+
+                if (despesaExiste)
                 {
-                    var despesaExiste = _dbContext.Set<TEntity>().Any(x => x.Id == id);
+                    registro.Id = id;
 
-                    if (despesaExiste)
-                    {
-                        registro.Id = id;
+                    _dbContext.Set<TEntity>().Update(registro);
 
-                        _dbContext.Set<TEntity>().Update(registro);
-
-                        _dbContext.SaveChanges();
-                    }
-                    else
-                        return false;
+                    _dbContext.SaveChanges();
                 }
+                else
+                    return false;
             }
             catch (Exception ex)
             {
@@ -61,21 +55,18 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                using (_dbContext)
+                var despesa = _dbContext.Set<TEntity>().Find(id);
+
+                if (despesa != null)
                 {
-                    var despesa = _dbContext.Set<TEntity>().Find(id);
+                    _dbContext.Set<TEntity>().Remove(despesa);
 
-                    if (despesa != null)
-                    {
-                        _dbContext.Set<TEntity>().Remove(despesa);
+                    _dbContext.SaveChanges();
 
-                        _dbContext.SaveChanges();
-
-                        return true;
-                    }
-                    else
-                        return false;
+                    return true;
                 }
+                else
+                    return false;
             }
             catch (Exception ex)
             {
@@ -87,10 +78,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                using (_dbContext)
-                {
-                    return _dbContext.Set<TEntity>().Where(x => x.Id == id).FirstOrDefault();
-                }
+                return _dbContext.Set<TEntity>().Where(x => x.Id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -102,10 +90,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                using (_dbContext)
-                {
-                    return _dbContext.Set<TEntity>().OrderBy(x => x.Id).ToList();
-                }
+                return _dbContext.Set<TEntity>().OrderBy(x => x.Id).ToList();
             }
             catch (Exception ex)
             {

@@ -1,6 +1,7 @@
 ﻿using EntityFrameworkDemo.Aplicacao.Modules.DespesaModule;
 using EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule;
 using EntityFrameworkDemo.Dominio.Shared;
+using EntityFrameworkDemo.Infra;
 using EntityFrameworkDemo.Infra.Logging;
 using EntityFrameworkDemo.Infra.Modules.DespesaModule;
 using System;
@@ -9,7 +10,9 @@ namespace EntityFrameworkDemo.ConsoleApp
 {
     public class Program
     {
-        private static readonly DespesaAppService despesaService = new DespesaAppService(new DespesaRepositoryEF());
+        private static FinancaDbContext dbContext = new FinancaDbContext();
+        private static DespesaRepositoryEF despesaRepository = new DespesaRepositoryEF(dbContext);
+        private static readonly DespesaAppService despesaService = new DespesaAppService(despesaRepository);
         private static readonly IOperacaoCadastravel operacoes = new OperacoesDespesa(despesaService);
 
         static void Main(string[] args)
