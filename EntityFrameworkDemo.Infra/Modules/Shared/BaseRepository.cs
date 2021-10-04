@@ -1,45 +1,49 @@
 ﻿using EntityFrameworkDemo.Dominio.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EntityFrameworkDemo.Infra.Modules.DespesaModule
+namespace EntityFrameworkDemo.Infra.Modules.Shared
 {
-    public class DespesaRepositoryEF : IDespesaRepository
+    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
-        public int InserirNovo(Despesa despesa)
+        private readonly DbContext _dbContext;
+
+        public BaseRepository(DbContext dbContext) => _dbContext = dbContext;
+
+        public int InserirNovo(TEntity registro)
         {
             try
             {
-                using (FinancaDbContext db = new FinancaDbContext())
+                using (_dbContext)
                 {
-                    db.Despesas.Add(despesa);
+                   _dbContext.Set<TEntity>().Add(registro);
 
-                    return db.SaveChanges();
+                    return _dbContext.SaveChanges();
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
-        public bool EditarRegistro(int id, Despesa registro)
+        public bool EditarRegistro(int id, TEntity registro)
         {
             try
             {
-                using (FinancaDbContext db = new FinancaDbContext())
+                using (_dbContext)
                 {
-                    var despesaExiste = db.Despesas.Any(x => x.Id == id);
+                    var despesaExiste = _dbContext.Set<TEntity>().Any(x => x.Id == id);
 
                     if (despesaExiste)
                     {
                         registro.Id = id;
 
-                        db.Despesas.Update(registro);
+                        _dbContext.Set<TEntity>().Update(registro);
 
-                        db.SaveChanges();
+                        _dbContext.SaveChanges();
                     }
                     else
                         return false;
@@ -57,15 +61,15 @@ namespace EntityFrameworkDemo.Infra.Modules.DespesaModule
         {
             try
             {
-                using (FinancaDbContext db = new FinancaDbContext())
+                using (_dbContext)
                 {
-                    var despesa = db.Despesas.Find(id);
+                    var despesa = _dbContext.Set<TEntity>().Find(id);
 
                     if (despesa != null)
                     {
-                        db.Despesas.Remove(despesa);
+                        _dbContext.Set<TEntity>().Remove(despesa);
 
-                        db.SaveChanges();
+                        _dbContext.SaveChanges();
 
                         return true;
                     }
@@ -79,13 +83,13 @@ namespace EntityFrameworkDemo.Infra.Modules.DespesaModule
             }
         }
 
-        public Despesa SelecionarPorId(int id)
+        public TEntity SelecionarPorId(int id)
         {
             try
             {
-                using (FinancaDbContext db = new FinancaDbContext())
+                using (_dbContext)
                 {
-                    return db.Despesas.Where(x => x.Id == id).FirstOrDefault();
+                    return _dbContext.Set<TEntity>().Where(x => x.Id == id).FirstOrDefault();
                 }
             }
             catch (Exception ex)
@@ -94,14 +98,13 @@ namespace EntityFrameworkDemo.Infra.Modules.DespesaModule
             }
         }
 
-        public IEnumerable<Despesa> SelecionarTodos()
+        public IEnumerable<TEntity> SelecionarTodos()
         {
             try
             {
-                using (FinancaDbContext db = new FinancaDbContext())
+                using (_dbContext)
                 {
-
-                    return db.Despesas.OrderBy(x => x.Id).ToList();
+                    return _dbContext.Set<TEntity>().OrderBy(x => x.Id).ToList();
                 }
             }
             catch (Exception ex)

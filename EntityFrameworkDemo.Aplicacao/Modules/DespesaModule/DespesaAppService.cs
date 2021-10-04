@@ -81,7 +81,7 @@ namespace EntityFrameworkDemo.Aplicacao.Modules.DespesaModule
 
             try
             {
-                return despesaRepository.SelecionarTodos();
+                return despesaRepository.SelecionarTodos() as List<Despesa>;
             }
             catch (Exception ex)
             {

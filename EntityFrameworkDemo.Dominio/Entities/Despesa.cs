@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EntityFrameworkDemo.Dominio.Entities
 {
-    public class Despesa
+    public class Despesa : IEntity
     {
         public int Id { get; set; }
 

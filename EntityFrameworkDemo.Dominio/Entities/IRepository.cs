@@ -2,12 +2,12 @@
 
 namespace EntityFrameworkDemo.Dominio.Entities
 {
-    public interface IRepository<T>
+    public interface IRepository<TEntity> where TEntity : IEntity
     {
-        int InserirNovo(T registro);
-        bool EditarRegistro(int id, T registro);
+        int InserirNovo(TEntity registro);
+        bool EditarRegistro(int id, TEntity registro);
         bool ExcluirRegistro(int id);
-        T SelecionarPorId(int id);
-        List<T> SelecionarTodos();
+        TEntity SelecionarPorId(int id);
+        IEnumerable<TEntity> SelecionarTodos();
     }
 }
