@@ -1,4 +1,4 @@
-﻿namespace EntityFrameworkDemo.Dominio.Shared
+﻿namespace EntityFrameworkDemo.Dominio.Entities.Shared
 {
     public interface IOperacaoCadastravel
     {

@@ -1,4 +1,4 @@
-﻿namespace EntityFrameworkDemo.Dominio.ValueObjects
+﻿namespace EntityFrameworkDemo.Dominio.ValueObjects.DespesaModule
 {
     public enum TipoDespesa
     {

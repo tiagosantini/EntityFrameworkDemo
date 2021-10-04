@@ -1,4 +1,5 @@
-﻿using EntityFrameworkDemo.Dominio.Entities;
+﻿using EntityFrameworkDemo.Dominio.Entities.DespesaModule;
+using EntityFrameworkDemo.Dominio.Entities.Shared;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,6 @@ namespace EntityFrameworkDemo.Aplicacao.Modules.DespesaModule
                 throw new Exception(ex.Message, ex);
             }
         }
-
 
         public bool EditarRegistro(int id, Despesa despesa)
         {

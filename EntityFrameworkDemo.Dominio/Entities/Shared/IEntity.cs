@@ -1,4 +1,4 @@
-﻿namespace EntityFrameworkDemo.Dominio.Entities
+﻿namespace EntityFrameworkDemo.Dominio.Entities.Shared
 {
     public interface IEntity
     {

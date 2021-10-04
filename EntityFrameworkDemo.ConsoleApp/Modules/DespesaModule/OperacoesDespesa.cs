@@ -1,7 +1,7 @@
 ﻿using EntityFrameworkDemo.Aplicacao.Modules.DespesaModule;
-using EntityFrameworkDemo.Dominio.Entities;
-using EntityFrameworkDemo.Dominio.Shared;
-using EntityFrameworkDemo.Dominio.ValueObjects;
+using EntityFrameworkDemo.Dominio.Entities.DespesaModule;
+using EntityFrameworkDemo.Dominio.Entities.Shared;
+using EntityFrameworkDemo.Dominio.ValueObjects.DespesaModule;
 using System;
 using System.Collections.Generic;
 

@@ -1,4 +1,4 @@
-﻿using EntityFrameworkDemo.Dominio.Entities;
+﻿using EntityFrameworkDemo.Dominio.Entities.Shared;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

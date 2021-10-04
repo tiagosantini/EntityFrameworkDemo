@@ -1,4 +1,4 @@
-﻿using EntityFrameworkDemo.Dominio.Entities;
+﻿using EntityFrameworkDemo.Dominio.Entities.DespesaModule;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,6 +1,6 @@
 ﻿using EntityFrameworkDemo.Aplicacao.Modules.DespesaModule;
 using EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule;
-using EntityFrameworkDemo.Dominio.Shared;
+using EntityFrameworkDemo.Dominio.Entities.Shared;
 using EntityFrameworkDemo.Infra;
 using EntityFrameworkDemo.Infra.Logging;
 using EntityFrameworkDemo.Infra.Modules.DespesaModule;

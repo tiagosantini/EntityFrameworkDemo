@@ -1,7 +1,8 @@
-﻿using EntityFrameworkDemo.Dominio.ValueObjects;
+﻿using EntityFrameworkDemo.Dominio.Entities.Shared;
+using EntityFrameworkDemo.Dominio.ValueObjects.DespesaModule;
 using System.ComponentModel.DataAnnotations;
 
-namespace EntityFrameworkDemo.Dominio.Entities
+namespace EntityFrameworkDemo.Dominio.Entities.DespesaModule
 {
     public class Despesa : IEntity
     {
