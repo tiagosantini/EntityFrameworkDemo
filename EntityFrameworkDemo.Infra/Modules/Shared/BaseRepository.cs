@@ -9,8 +9,13 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
         private readonly DbContext _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
 
-        public BaseRepository(DbContext dbContext) => _dbContext = dbContext;
+        public BaseRepository(DbContext dbContext)
+        {
+             _dbContext = dbContext;
+            _dbSet = dbContext.Set<TEntity>();
+        }
 
         public int InserirNovo(TEntity registro)
         {
@@ -36,7 +41,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
                 {
                     registro.Id = id;
 
-                    _dbContext.Set<TEntity>().Update(registro);
+                    _dbSet.Update(registro);
 
                     _dbContext.SaveChanges();
                 }
@@ -55,11 +60,11 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                var despesa = _dbContext.Set<TEntity>().Find(id);
+                var despesa = _dbSet.Find(id);
 
                 if (despesa != null)
                 {
-                    _dbContext.Set<TEntity>().Remove(despesa);
+                    _dbSet.Remove(despesa);
 
                     _dbContext.SaveChanges();
 
@@ -78,7 +83,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                return _dbContext.Set<TEntity>().Where(x => x.Id == id).FirstOrDefault();
+                return _dbSet.Where(x => x.Id == id).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -90,7 +95,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
         {
             try
             {
-                return _dbContext.Set<TEntity>().OrderBy(x => x.Id).ToList();
+                return _dbSet.OrderBy(x => x.Id).ToList();
             }
             catch (Exception ex)
             {
