@@ -31,22 +31,13 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
             }
         }
 
-        public bool Editar(int id, TEntity registro)
+        public bool Editar(TEntity registro)
         {
             try
             {
-                var registroEncontrado = _dbSet.Find(id);
-
-                if (registroEncontrado != null)
-                {
-                    registro.Id = id;
-
-                    _dbContext.Entry(registroEncontrado).CurrentValues.SetValues(registro);
-
-                    _dbContext.SaveChanges();
-                }
-                else
-                    return false;
+                _dbSet.Update(registro);
+                _dbContext.SaveChanges();
+                _dbContext.Entry(registro).State = EntityState.Detached;
             }
             catch (Exception ex)
             {

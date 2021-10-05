@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkDemo.Aplicacao.Modules.DespesaModule;
+using EntityFrameworkDemo.ConsoleApp.Modules.Shared;
 using EntityFrameworkDemo.Dominio.Entities.DespesaModule;
 using EntityFrameworkDemo.Dominio.Entities.Shared;
 using EntityFrameworkDemo.Dominio.ValueObjects.DespesaModule;
@@ -18,7 +19,7 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
 
         public void InserirNovoRegistro()
         {
-            Despesa despesa = ObterDespesa();
+            Despesa despesa = ObterDespesa(TipoOperacao.Insercao);
 
             int novasColunas = despesaService.Inserir(despesa);
 
@@ -35,9 +36,9 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
             Console.Write("Digite o ID do registro que deseja editar: ");
             int id = Convert.ToInt32(Console.ReadLine());
 
-            Despesa despesa = ObterDespesa();
+            Despesa despesa = ObterDespesa(TipoOperacao.Edicao, id);
 
-            bool conseguiuEditar = despesaService.Editar(id, despesa);
+            bool conseguiuEditar = despesaService.Editar(despesa);
 
             Console.Clear();
 
@@ -92,7 +93,7 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
 
         #region Métodos privados da tela
 
-        private static Despesa ObterDespesa()
+        private static Despesa ObterDespesa(TipoOperacao tipoOperacao = TipoOperacao.Insercao, int id = 0)
         {
             Console.Write("Por favor digite a descrição da despesa: ");
             string descricao = Console.ReadLine();
@@ -128,7 +129,12 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
                 default: break;
             }
 
-            return Despesa.NovaDespesa(descricao, valor, tipoDespesa);
+            Despesa despesa = Despesa.NovaDespesa(descricao, valor, tipoDespesa);
+
+            if (tipoOperacao == TipoOperacao.Edicao)
+                despesa.Id = id;
+
+            return despesa;
         }
 
         private static void ConfigurarTitulo(string titulo)

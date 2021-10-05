@@ -26,17 +26,17 @@ namespace EntityFrameworkDemo.Aplicacao.Modules.Shared
             }
         }
 
-        public virtual bool Editar(int id, T registro)
+        public virtual bool Editar(T registro)
         {
-            Log.Debug("Editando registro ID: {IdRegistro}", id);
+            Log.Debug("Editando registro ID: {IdRegistro}", registro.Id);
 
             try
             {
-                return _repository.Editar(id, registro);
+                return _repository.Editar(registro);
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Falha ao tentar editar registro ID: {IdRegistro}", id);
+                Log.Error(ex, "Falha ao tentar editar registro ID: {IdRegistro}", registro.Id);
                 throw new Exception(ex.Message, ex);
             }
         }
