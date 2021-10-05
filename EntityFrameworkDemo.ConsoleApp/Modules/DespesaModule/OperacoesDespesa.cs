@@ -20,7 +20,7 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
         {
             Despesa despesa = ObterDespesa();
 
-            int novasColunas = despesaService.InserirNovaDespesa(despesa);
+            int novasColunas = despesaService.Inserir(despesa);
 
             Console.Clear();
 
@@ -37,7 +37,7 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
 
             Despesa despesa = ObterDespesa();
 
-            bool conseguiuEditar = despesaService.EditarRegistro(id, despesa);
+            bool conseguiuEditar = despesaService.Editar(id, despesa);
 
             Console.Clear();
 
@@ -52,7 +52,7 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
             Console.Write("Digite o ID do registro que deseja excluir: ");
             int id = Convert.ToInt32(Console.ReadLine());
 
-            bool conseguiuExcluir = despesaService.ExcluirRegistro(id);
+            bool conseguiuExcluir = despesaService.Excluir(id);
 
             Console.Clear();
 
@@ -83,7 +83,7 @@ namespace EntityFrameworkDemo.ConsoleApp.Modules.DespesaModule
 
             ConfigurarTitulo("Visualizando todas as despesas salvas...");
 
-            var despesasEncontradas = despesaService.SelecionarTodasDespesas();
+            var despesasEncontradas = despesaService.SelecionarTodos();
 
             ApresentarTabela(despesasEncontradas, ref totalDespesas);
 
