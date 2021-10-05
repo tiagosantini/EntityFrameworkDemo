@@ -17,7 +17,7 @@ namespace EntityFrameworkDemo.Aplicacao.Modules.Shared
 
             try
             {
-                return _repository.InserirNovo(registro);
+                return _repository.Inserir(registro);
             }
             catch (Exception ex)
             {
@@ -32,7 +32,7 @@ namespace EntityFrameworkDemo.Aplicacao.Modules.Shared
 
             try
             {
-                return _repository.EditarRegistro(id, registro);
+                return _repository.Editar(id, registro);
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace EntityFrameworkDemo.Aplicacao.Modules.Shared
 
             try
             {
-                return _repository.ExcluirRegistro(id);
+                return _repository.Excluir(id);
             }
             catch (Exception ex)
             {

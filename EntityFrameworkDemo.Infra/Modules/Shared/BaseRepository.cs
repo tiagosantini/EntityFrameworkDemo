@@ -17,7 +17,7 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
             _dbSet = dbContext.Set<TEntity>();
         }
 
-        public int InserirNovo(TEntity registro)
+        public int Inserir(TEntity registro)
         {
             try
             {
@@ -31,17 +31,17 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
             }
         }
 
-        public bool EditarRegistro(int id, TEntity registro)
+        public bool Editar(int id, TEntity registro)
         {
             try
             {
-                var despesa = _dbSet.Find(id);
+                var registroEncontrado = _dbSet.Find(id);
 
-                if (despesa != null)
+                if (registroEncontrado != null)
                 {
                     registro.Id = id;
 
-                    _dbContext.Entry(despesa).CurrentValues.SetValues(registro);
+                    _dbContext.Entry(registroEncontrado).CurrentValues.SetValues(registro);
 
                     _dbContext.SaveChanges();
                 }
@@ -56,15 +56,15 @@ namespace EntityFrameworkDemo.Infra.Modules.Shared
             return true;
         }
 
-        public bool ExcluirRegistro(int id)
+        public bool Excluir(int id)
         {
             try
             {
-                var despesa = _dbSet.Find(id);
+                var registroEncontrado = _dbSet.Find(id);
 
-                if (despesa != null)
+                if (registroEncontrado != null)
                 {
-                    _dbSet.Remove(despesa);
+                    _dbSet.Remove(registroEncontrado);
 
                     _dbContext.SaveChanges();
                 }
